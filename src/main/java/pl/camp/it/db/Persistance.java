@@ -6,6 +6,7 @@ import pl.camp.it.model.Car;
 import pl.camp.it.model.Vehicle;
 
 import java.io.*;
+import java.util.List;
 
 public class Persistance {
     static private final String fileName = "C:\\Users\\dawid\\OneDrive\\Pulpit\\ITCamp-JuniorJavaDeveloper\\2020.06.21-carrentmaven\\carRentDb.txt";
@@ -66,7 +67,7 @@ public class Persistance {
 
     }
 
-    public static void loadData(){
+    public static void loadData(List<Vehicle> list){
         try {
             FileReader fileReader = new FileReader(fileName);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -80,12 +81,19 @@ public class Persistance {
                             tab[3],
                             tab[4],
                             Boolean.parseBoolean(tab[5]));
-                    VehicleRepository.getRepository().getVehicles().add(car);
+                    list.add(car);
                 } else{
-                    Bus bus = new Bus();
+                    Bus bus = new Bus(Integer.parseInt(tab[1]),
+                            tab[2],
+                            tab[3],
+                            tab[4],
+                            Boolean.parseBoolean(tab[5]),
+                            Integer.parseInt(tab[6]),
+                            Integer.parseInt(tab[7]));
+                    list.add(bus);
                 }
             }
-
+            bufferedReader.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

@@ -15,6 +15,14 @@ public class Vehicle {
         this.rent = false;
     }
 
+    public Vehicle(int id, String brand, String model, String vin, boolean isRent) {
+        this.id = id;
+        this.brand = brand;
+        this.model = model;
+        this.vin = vin;
+        this.rent = isRent;
+    }
+
     public Vehicle() { // zrobienie tego konstruktora to furtka na stworzenie niestandardowego samochodu
     }
 

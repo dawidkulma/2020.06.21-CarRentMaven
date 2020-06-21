@@ -1,0 +1,4 @@
+Car;1;BMW;3;jkasydg;false
+Car;3;Audi;A5;qry6535qwy;false
+Bus;4;Solaris;152;hjsgdfa;false;40;6
+Bus;5;Solaris;152;hjsgdfa;false;40;6

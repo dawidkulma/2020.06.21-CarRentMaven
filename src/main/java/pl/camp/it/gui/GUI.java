@@ -1,13 +1,12 @@
 package pl.camp.it.gui;
 
+import pl.camp.it.db.Persistance;
 import pl.camp.it.model.Vehicle;
 import pl.camp.it.db.VehicleRepository;
 
 import java.util.Scanner;
 
 public class GUI {
-
-    private static final VehicleRepository cr = new VehicleRepository();
     private static final Scanner scanner = new Scanner(System.in);
 
     /*
@@ -68,6 +67,7 @@ public class GUI {
                 rentCar();
                 break;
             case "3":
+                Persistance.saveData();
                 System.exit(0); // program się zamyka, kończy się jvm, wyjście z programu natychmiast
                 //break; // tutaj akurat wychodzi, że break kończy program, bo skończy się switch i skończy się ta metoda
             default:
@@ -80,7 +80,7 @@ public class GUI {
     }
 
     private static void showCars(){
-        for (Vehicle temporaryVehicle : cr.getVehicles()) {
+        for (Vehicle temporaryVehicle : VehicleRepository.getRepository().getVehicles()) {
             if (temporaryVehicle != null && !temporaryVehicle.isRent()){
                 /*if (temporaryVehicle instanceof Car){
 
@@ -107,7 +107,7 @@ public class GUI {
     private static void rentCar(){
         System.out.println("Wpisz id samochodu:");
         String carId = scanner.nextLine();
-        for (Vehicle temporaryVehicle : cr.getVehicles()){
+        for (Vehicle temporaryVehicle : VehicleRepository.getRepository().getVehicles()){
             try{
                 if (temporaryVehicle != null && temporaryVehicle.getId() == Integer.parseInt(carId)){
                     if (!temporaryVehicle.isRent()) {

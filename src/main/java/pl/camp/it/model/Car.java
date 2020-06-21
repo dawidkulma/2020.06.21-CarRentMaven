@@ -4,6 +4,7 @@ public class Car  extends Vehicle {
     public Car(int id, String brand, String model, String vin ){
         super(id, brand, model, vin);
     }
+    public Car(int id, String brand, String model, String vin, boolean isRent ){ super(id, brand, model, vin, isRent); }
 
     @Override
     public String toString() {
